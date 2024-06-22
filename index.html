@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Poppins:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .card {
+            background-color: rgba(25, 25, 25, 0.9);
+            border: 4px solid #ffd700;
+            border-radius: 20px;
+            padding: 25px;
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 0 20px #ffd700;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700;
+        }
+        
+        .image-container {
+            width: 180px;
+            height: 180px;
+            margin: 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 15px #ffd700;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        #ageCounter {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            margin: 20px 0;
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+        
+        #message {
+            margin-top: 20px;
+            font-style: italic;
+            color: #ffe66d;
+            min-height: 3em;
+        }
+        
+        button {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffd700;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        button:active {
+            background-color: #ffe66d;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="birthdayCard">
+        <h1>Happy Birthday!</h1>
+        <div class="image-container">
+            <img src="https://drive.google.com/uc?export=view&id=1RPcioVg_Bode6ZflSH-8oHNMxYGxfPl1" alt="Birthday celebrant" onerror="this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';">
+        </div>
+        <div id="ageCounter">33</div>
+        <p>Hey, you amazing human! Another year of being unapologetically you!</p>
+        <p>From São Paulo roots to New York nights, you're on the right path.</p>
+        <p>Wishing you all of your wishes and wants on your special day and your new year!</p>
+        <p>Felicidade! Beijos e abraços, seu vizinho Pablo.</p>
+        <div id="message"></div>
+        <button onclick="toggleMessage()">Your birthday surprise</button>
+        <button onclick="startParty()">Let's celebrate!</button>
+    </div>
+
+    <script>
+        function toggleMessage() {
+            const messages = [
+                "May your year shine as bright as your smile!",
+                "Here's to another year of golden memories!",
+                "33 looks amazing on you!",
+                "You're not just a year older, you're a year more radiant!",
+                "Happy Birthday! May your day be as warm as this golden glow!"
+            ];
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = messages[Math.floor(Math.random() * messages.length)];
+        }
+
+        function startParty() {
+            document.body.style.animation = 'backgroundParty 5s infinite';
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes backgroundParty {
+                    0%, 100% { background-color: #1a1a1a; }
+                    25% { background-color: #4a1a4a; }
+                    50% { background-color: #1a4a1a; }
+                    75% { background-color: #4a4a1a; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        let age = 0;
+        const ageCounter = document.getElementById('ageCounter');
+        const intervalId = setInterval(() => {
+            ageCounter.textContent = age;
+            if (age === 33) clearInterval(intervalId);
+            age++;
+        }, 100);
+    </script>
+</body>
+</html>
